@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Assignments</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+	<div class="container">
+		<div class="sidebar">
+			<h2>🎓 Student Portal</h2>
+			<ul>
+				<li><a href="dashboard.html"><i class="fa-solid fa-house"></i> Dashboard</a></li>
+				<li><a href="courses.html"><i class="fa-solid fa-book"></i> Courses</a></li>
+				<li><a href="timetable.html"><i class="fa-solid fa-calendar"></i> Timetable</a></li>
+				<li><a href="assignments.html" class="active"><i class="fa-solid fa-file"></i> Assignments</a></li>
+				<li><a href="profile.html"><i class="fa-solid fa-user"></i> Profile</a></li>
+				<li><a href="contact.html"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+			</ul>
+		</div>
+		<div class="main">
+			<header>
+				<h1>Assignments</h1>
+				<input type="text" id="assignmentSearch" placeholder="🔍 Search Assignment">
+			</header>
+			<div class="assignment-grid">
+				<div class="assignment-card">
+					<h2>Web Development</h2>
+					<p>Create a Responsive College Website.</p>
+					<p><strong>Due:</strong> 30 June 2026</p>
+					<span class="status pending">Pending</span>
+					<button>Upload</button>
+				</div>
+				<div class="assignment-card">
+					<h2>Java Programming</h2>
+					<p>Student Management System using Java.</p>
+					<p><strong>Due:</strong> 3 July 2026</p>
+					<span class="status submitted">Submitted</span>
+					<button>View</button>
+				</div>
+				<div class="assignment-card">
+					<h2>DBMS</h2>
+					<p>SQL Queries and Database Design.</p>
+					<p><strong>Due:</strong> 5 July 2026</p>
+					<span class="status pending">Pending</span>
+					<button>Upload</button>
+				</div>
+			</div>
+			<h2 style="margin-top:40px;">Upload Assignment</h2>
+			<form class="upload-form">
+			<input type="text" placeholder="Assignment Title" required>
+			<input type="file" required>
+			<textarea placeholder="Comments" rows="5"></textarea>
+			<button type="submit">Submit Assignment</button>
+			</form>
+		</div>
+	</div>
+	<script src="js/script.js"></script>
+</body>
+
+</html>

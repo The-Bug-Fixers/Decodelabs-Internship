@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Timetable</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+	<div class="container">
+		<div class="sidebar">
+			<h2>🎓 Student Portal</h2>
+			<ul>
+				<li><a href="dashboard.html"><i class="fa-solid fa-house"></i> Dashboard</a></li>
+				<li><a href="courses.html"><i class="fa-solid fa-book"></i> Courses</a></li>
+				<li><a href="timetable.html" class="active"><i class="fa-solid fa-calendar"></i> Timetable</a></li>
+				<li><a href="assignments.html"><i class="fa-solid fa-file"></i> Assignments</a></li>
+				<li><a href="profile.html"><i class="fa-solid fa-user"></i> Profile</a></li>
+				<li><a href="contact.html"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+			</ul>
+		</div>
+		<div class="main">
+			<header>
+				<h1>Weekly Timetable</h1>
+				<button onclick="window.print()">🖨 Print</button>
+			</header>
+			<div class="table-box">
+				<table>
+				<tr>
+					<th>Day</th>
+					<th>9:00-10:00</th>
+					<th>10:00-11:00</th>
+					<th>11:15-12:15</th>
+					<th>1:00-2:00</th>
+					<th>2:00-3:00</th>
+				</tr>
+				<tr>
+					<td>Monday</td>
+					<td class="web">Web Development</td>
+					<td class="dbms">DBMS</td>
+					<td class="java">Java</td>
+					<td class="network">Networks</td>
+					<td class="lab">Lab</td>
+				</tr>
+				<tr>
+					<td>Tuesday</td>
+					<td class="os">Operating Systems</td>
+					<td class="java">Java</td>
+					<td class="dbms">DBMS</td>
+					<td class="web">Web Development</td>
+					<td>Library</td>
+				</tr>
+				<tr>
+					<td>Wednesday</td>
+					<td class="network">Networks</td>
+					<td class="se">Software Engg.</td>
+					<td class="lab">Java Lab</td>
+					<td class="lab">C Lab</td>
+					<td>Sports</td>
+				</tr>
+				<tr>
+					<td>Thursday</td>
+					<td class="web">Web Development</td>
+					<td class="os">Operating Systems</td>
+					<td class="java">Java</td>
+					<td>Mini Project</td>
+					<td>Library</td>
+				</tr>
+				<tr>
+					<td>Friday</td>
+					<td class="dbms">DBMS</td>
+					<td class="network">Networks</td>
+					<td class="se">Software Engg.</td>
+					<td class="lab">Web Lab</td>
+					<td>Seminar</td>
+				</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+	<script src="js/script.js"></script>
+</body>
+
+</html>
