@@ -1,0 +1,16 @@
+[
+    {
+        "id": 1,
+        "name": "Tharun",
+        "email": "tharun@gmail.com",
+        "age": 19,
+        "branch": "CSE"
+    },
+    {
+        "id": 2,
+        "name": "Rahul",
+        "email": "rahul@gmail.com",
+        "age": 20,
+        "branch": "ECE"
+    }
+]
