@@ -50,3 +50,22 @@ if(contactForm){
 	});
 }
 
+/*-----------------------------------dashboard.html------------*/
+const token = localStorage.getItem("token");
+
+if (!token) {
+    alert("Please login first!");
+    window.location.href = "login.html";
+}
+
+document.getElementById("logoutBtn").addEventListener("click", () => {
+
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+
+    alert("Logged out successfully!");
+
+    window.location.href = "login.html";
+
+});
+

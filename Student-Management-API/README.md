@@ -1,53 +1,96 @@
-# Student Management REST API
+# Student Management System 
 
-## Description
+## Overview
 
-A simple REST API built using Node.js and Express.js to manage student records.
+Student Management System is a RESTful backend application built with Node.js, Express.js, and MongoDB. It demonstrates professional backend development practices including authentication, CRUD operations, middleware, and secure API design.
+
+---
 
 ## Features
 
-- Get all students
-- Get student by ID
-- Add new student
-- Update student
-- Delete student
-- Input validation
-- JSON file storage
+* User Registration
+* User Login
+* JWT Authentication
+* Password Encryption using bcrypt
+* CRUD Operations for Students
+* MongoDB Database
+* Mongoose ODM
+* REST API
+* Protected Routes
+* Error Handling Middleware
+* File Upload Support (Multer)
+* CORS Enabled
 
-## Technologies
+---
 
-- Node.js
-- Express.js
+## Technologies Used
+
+* Node.js
+* Express.js
+* MongoDB
+* Mongoose
+* JWT
+* bcryptjs
+* dotenv
+* multer
+* express-validator
+
+---
 
 ## Installation
 
+Clone the repository.
+
+Install dependencies:
+
+```bash
 npm install
+```
 
-## Run Project
+Create a `.env` file.
 
-node server.js
+Run the server:
 
-Server URL:
+```bash
+npm run dev
+```
 
-http://localhost:3000
+or
+
+```bash
+npm start
+```
+
+---
 
 ## API Endpoints
 
-GET /students
+### Authentication
 
-GET /students/:id
+POST `/api/auth/register`
 
-POST /students
+POST `/api/auth/login`
 
-PUT /students/:id
+### Students
 
-DELETE /students/:id
+GET `/api/students`
 
-## Sample POST Body
+GET `/api/students/:id`
 
-{
-    "name":"Ravi",
-    "email":"ravi@gmail.com",
-    "age":20,
-    "branch":"IT"
-}
+POST `/api/students`
+
+PUT `/api/students/:id`
+
+DELETE `/api/students/:id`
+
+---
+
+## Author
+
+Tharun
+
+---
+
+## License
+
+MIT

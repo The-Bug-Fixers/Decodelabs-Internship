@@ -1,131 +1,103 @@
-const fs = require("fs");
-const path = require("path");
+const Student = require("../models/Student");
 
-const filePath = path.join(__dirname, "../data/students.json");
+// Get All Students
+exports.getStudents = async (req, res, next) => {
 
-// Read students from JSON file
-const readStudents = () => {
-    const data = fs.readFileSync(filePath);
-    return JSON.parse(data);
+    try {
+        const students = await Student.find();
+        res.status(200).json({
+            success: true,
+            count: students.length,
+            students
+        });
+    }
+    catch (error) {
+        next(error);
+    }
 };
 
-// Write students to JSON file
-const writeStudents = (students) => {
-    fs.writeFileSync(filePath, JSON.stringify(students, null, 4));
+// Get Student By ID
+exports.getStudent = async (req, res, next) => {
+    try {
+        const student = await Student.findById(req.params.id);
+        if (!student) {
+            return res.status(404).json({
+                success: false,
+                message: "Student Not Found"
+            });
+        }
+        res.status(200).json({
+            success: true,
+            student
+        });
+    }
+    catch (error) {
+        next(error);
+    }
 };
 
-// GET ALL STUDENTS
-exports.getAllStudents = (req, res) => {
-    const students = readStudents();
+// Add Student
+exports.addStudent = async (req, res, next) => {
 
-    res.status(200).json({
-        success: true,
-        count: students.length,
-        data: students
-    });
+    try {
+        const student = await Student.create(req.body);
+        res.status(201).json({
+            success: true,
+            message: "Student Added",
+            student
+        });
+    }
+    catch (error) {
+        next(error);
+    }
 };
 
-// GET STUDENT BY ID
-exports.getStudentById = (req, res) => {
-    const students = readStudents();
-
-    const id = parseInt(req.params.id);
-
-    const student = students.find(s => s.id === id);
-
-    if (!student) {
-        return res.status(404).json({
-            success: false,
-            message: "Student not found"
+// Update Student
+exports.updateStudent = async (req, res, next) => {
+    try {
+        const student = await Student.findByIdAndUpdate(
+            req.params.id,
+            req.body,
+            {
+                new: true,
+                runValidators: true
+            }
+        );
+        if (!student) {
+            return res.status(404).json({
+                success: false,
+                message: "Student Not Found"
+            });
+        }
+        res.status(200).json({
+            success: true,
+            message: "Student Updated",
+            student
         });
     }
 
-    res.status(200).json({
-        success: true,
-        data: student
-    });
+    catch (error) {
+        next(error);
+    }
 };
 
-// ADD STUDENT
-exports.addStudent = (req, res) => {
+// Delete Student
+exports.deleteStudent = async (req, res, next) => {
+    try {
+        const student = await Student.findByIdAndDelete(req.params.id);
+        if (!student) {
+            return res.status(404).json({
+                success: false,
+                message: "Student Not Found"
+            });
+        }
 
-    const students = readStudents();
-
-    const newStudent = {
-        id: students.length ? students[students.length - 1].id + 1 : 1,
-        name: req.body.name,
-        email: req.body.email,
-        age: req.body.age,
-        branch: req.body.branch
-    };
-
-    students.push(newStudent);
-
-    writeStudents(students);
-
-    res.status(201).json({
-        success: true,
-        message: "Student Added Successfully",
-        data: newStudent
-    });
-};
-
-// UPDATE STUDENT
-exports.updateStudent = (req, res) => {
-
-    const students = readStudents();
-
-    const id = parseInt(req.params.id);
-
-    const index = students.findIndex(s => s.id === id);
-
-    if (index === -1) {
-        return res.status(404).json({
-            success: false,
-            message: "Student not found"
+        res.status(200).json({
+            success: true,
+            message: "Student Deleted"
         });
     }
-
-    students[index] = {
-        ...students[index],
-        name: req.body.name,
-        email: req.body.email,
-        age: req.body.age,
-        branch: req.body.branch
-    };
-
-    writeStudents(students);
-
-    res.status(200).json({
-        success: true,
-        message: "Student Updated Successfully",
-        data: students[index]
-    });
-};
-
-// DELETE STUDENT
-exports.deleteStudent = (req, res) => {
-
-    const students = readStudents();
-
-    const id = parseInt(req.params.id);
-
-    const index = students.findIndex(s => s.id === id);
-
-    if (index === -1) {
-        return res.status(404).json({
-            success: false,
-            message: "Student not found"
-        });
+    catch (error) {
+        next(error);
     }
-
-    const deletedStudent = students.splice(index, 1);
-
-    writeStudents(students);
-
-    res.status(200).json({
-        success: true,
-        message: "Student Deleted Successfully",
-        data: deletedStudent
-    });
 };

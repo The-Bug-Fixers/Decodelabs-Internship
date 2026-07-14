@@ -1,32 +1,30 @@
 const express = require("express");
-const studentRoutes = require("./routes/students");
+const dotenv = require("dotenv");
+const cors = require("cors");
+
+dotenv.config();
+const connectDB = require("./config/db");
+const authRoutes = require("./routes/authRoutes");
+const studentRoutes = require("./routes/studentRoutes");
+const errorHandler = require("./middleware/errorMiddleware");
+
+connectDB();
 
 const app = express();
-
-// Middleware
+app.use(cors());
 app.use(express.json());
-
-// Default Route
 app.get("/", (req, res) => {
     res.json({
-        message: "Welcome to Student Management API"
+        message: "Student Management System API Running"
     });
 });
 
-// Student Routes
-app.use("/students", studentRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/students", studentRoutes);
+app.use(errorHandler);
 
-// Invalid Route
-app.use((req, res) => {
-    res.status(404).json({
-        success: false,
-        message: "Route Not Found"
-    });
-});
-
-// Server
-const PORT = 3000;
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+    console.log(`Server running on port ${PORT}`);
 });
