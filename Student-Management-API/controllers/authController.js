@@ -2,11 +2,20 @@ const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const generateToken = require("../utils/generateToken");
 
+
 // Register User
 exports.registerUser = async (req, res, next) => {
     try {
 
-        const { name, email, password } = req.body;
+        const {
+            name,
+            rollNo,
+            email,
+            phone,
+            branch,
+            semester,
+            password
+        } = req.body;
 
         const userExists = await User.findOne({ email });
 
@@ -18,12 +27,15 @@ exports.registerUser = async (req, res, next) => {
         }
 
         const salt = await bcrypt.genSalt(10);
-
         const hashedPassword = await bcrypt.hash(password, salt);
 
         const user = await User.create({
             name,
+            rollNo,
             email,
+            phone,
+            branch,
+            semester,
             password: hashedPassword
         });
 
@@ -38,7 +50,8 @@ exports.registerUser = async (req, res, next) => {
     }
 };
 
-// Login User
+
+// Login User---------------------------------------------------------------------------
 exports.loginUser = async (req, res, next) => {
 
     try {
@@ -74,4 +87,54 @@ exports.loginUser = async (req, res, next) => {
         next(error);
     }
 
+};
+
+// Get Logged-in User Profile-------------------------------------------------------------
+exports.getProfile = async (req, res, next) => {
+
+    try {
+
+        const user = await User.findById(req.user._id).select("-password");
+
+        res.status(200).json({
+            success: true,
+            user
+        });
+
+    } catch (error) {
+        next(error);
+    }
+
+};
+
+// Update User Profile-----------------------------------------------------------------------
+exports.updateProfile = async (req, res, next) => {
+    try {
+
+        const user = await User.findById(req.user._id);
+
+        if (!user) {
+            return res.status(404).json({
+                success: false,
+                message: "User not found"
+            });
+        }
+
+        user.name = req.body.name || user.name;
+        user.phone = req.body.phone || user.phone;
+        user.branch = req.body.branch || user.branch;
+        user.semester = req.body.semester || user.semester;
+        user.rollNo = req.body.rollNo || user.rollNo;
+
+        const updatedUser = await user.save();
+
+        res.status(200).json({
+            success: true,
+            message: "Profile Updated Successfully",
+            user: updatedUser
+        });
+
+    } catch (error) {
+        next(error);
+    }
 };

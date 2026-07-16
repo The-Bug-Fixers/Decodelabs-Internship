@@ -38,8 +38,40 @@
 				<h1>Assignments</h1>
 				<input type="text" id="assignmentSearch" placeholder="🔍 Search Assignment">
 			</header>
+			<div id="assignmentContainer">
 			<div class="assignment-grid">
-				<div class="assignment-card">
+				container.innerHTML += `
+<div class="assignment-card">
+    <h2>${assignment.title}</h2>
+
+    <p><strong>Subject:</strong> ${assignment.subject}</p>
+
+    <p><strong>Due Date:</strong>
+        ${new Date(assignment.dueDate).toLocaleDateString()}
+    </p>
+
+    <span class="status ${assignment.status.toLowerCase()}">
+        ${assignment.status}
+    </span>
+
+    <br><br>
+
+    <input
+        type="file"
+        id="file-${assignment._id}"
+        accept=".pdf,.doc,.docx"
+    >
+
+    <br><br>
+
+    <button
+        onclick="uploadAssignment('${assignment._id}')">
+        Upload Assignment
+    </button>
+</div>
+</div>
+`;
+		<!--<div class="assignment-card">
 					<h2>Web Development</h2>
 					<p>Create a Responsive College Website.</p>
 					<p><strong>Due:</strong> 30 June 2026</p>
@@ -59,7 +91,7 @@
 					<p><strong>Due:</strong> 5 July 2026</p>
 					<span class="status pending">Pending</span>
 					<button>Upload</button>
-				</div>
+				</div>-->
 			</div>
 			<h2 style="margin-top:40px;">Upload Assignment</h2>
 			<form class="upload-form">
@@ -70,7 +102,7 @@
 			</form>
 		</div>
 	</div>
-	<script src="js/script.js"></script>
+	<script src="js/assignments.js"></script>
 </body>
 
 </html>

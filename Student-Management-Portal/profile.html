@@ -40,13 +40,14 @@
 			<div class="profile-container">
 				<div class="profile-card">
 					<img src="images/student.png" class="profile-image">
-					<h2>Tarun Sankar</h2>
-					<p>B.Tech - Electronics & Communication Engineering</p>
-					<p><strong>Roll No:</strong> ECE23045</p>
-					<p><strong>Semester:</strong> III</p>
-					<p><strong>Email:</strong> tarun@gmail.com</p>
-					<p><strong>Phone:</strong> +91 9876543210</p>
-					<button>Edit Profile</button>
+					<h2 >Student Name&nbsp;<input type="text" id="studentName" disabled></h2>
+					<p><strong>Branch</strong>&nbsp;<input type="text" id="studentBranch" disabled></p>
+					<p><strong>Roll No:</strong> &nbsp;<input type="number" id="studentRoll" disabled></p>
+					<p><strong>Semester:</strong>&nbsp;<input type="text" id="studentSemester" disabled></p>
+					<p><strong>Email:</strong> &nbsp;<input type="email" id="studentEmail" disabled></p>
+					<p><strong>Phone:</strong>&nbsp;<input type="text" id="studentPhone" disabled></p>
+					<button id="editBtn">Edit Profile</button>
+					<button id="saveBtn" style="display:none;">Save</button>
 				</div>
 				<div class="profile-details">
 					<h2>Academic Details</h2>
@@ -80,7 +81,7 @@
 			</div>
 		</div>
 	</div>
-	<script src="js/script.js"></script>
+	<script src="js/profile.js"></script>
 </body>
 
 </html>

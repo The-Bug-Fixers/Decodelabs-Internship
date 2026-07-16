@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register | Student Management Portal</title>
+    <title>Register | Student Portal</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,52 +16,90 @@
 
 <body class="login-page">
 
-<div class="login-container">
-    <div class="login-box">
+    <div class="login-container">
 
-        <h1>🎓 Student Portal</h1>
-        <p>Create your account</p>
+        <div class="login-box">
 
-        <form id="registerForm">
+            <h1>🎓 Student Portal</h1>
+            <p>Create Your Student Account</p>
 
-            <div class="input-group">
-                <label>Name</label>
-                <input
-                    type="text"
-                    id="name"
-                    placeholder="Enter your name"
-                    required>
+            <form id="registerForm">
+
+                <div class="input-group">
+                    <label>Full Name</label>
+                    <input type="text" id="name" placeholder="Enter your name" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Roll Number</label>
+                    <input type="text" id="rollNo" placeholder="Enter Roll Number" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Email</label>
+                    <input type="email" id="email" placeholder="Enter Email" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Phone Number</label>
+                    <input type="tel" id="phone" placeholder="Enter Phone Number" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Branch</label>
+
+                    <select id="branch" required>
+                        <option value="">Select Branch</option>
+                        <option>CSE</option>
+                        <option>ECE</option>
+                        <option>EEE</option>
+                        <option>Mechanical</option>
+                        <option>Civil</option>
+                    </select>
+
+                </div>
+
+                <div class="input-group">
+                    <label>Semester</label>
+
+                    <select id="semester" required>
+                        <option value="">Select Semester</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                    </select>
+
+                </div>
+
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" id="password" placeholder="Create Password" required>
+                </div>
+
+                <button type="submit">
+                    Register
+                </button>
+
+            </form>
+
+            <div class="register-link">
+                <p>
+                    Already have an account?
+                    <a href="login.html">Login</a>
+                </p>
             </div>
-            <div class="input-group">
-                <label>Email</label>
-                <input
-                    type="email"
-                    id="email"
-                    placeholder="Enter your email"required>
-            </div>
-            <div class="input-group">
-                <label>Password</label>
-                <input
-                    type="password"
-                    id="password"
-                    placeholder="Create a password"
-                    required>
-            </div>
-            <button type="submit">
-                Register
-            </button>
-        </form>
-        <div class="register-link">
-            <p>
-                Already have an account?
-                <a href="login.html">Login</a>
-            </p>
+
         </div>
 
     </div>
-</div>
 
-<script src="js/register.js"></script>
+    <script src="js/register.js"></script>
 
 </body>
+
 </html>

@@ -1,29 +1,70 @@
 const mongoose = require("mongoose");
 
-const userSchema = new mongoose.Schema(
-{
-    name:
-    {
+const userSchema = new mongoose.Schema({
+
+    name: {
         type: String,
-        required: true,
-        trim: true
+        required: true
     },
 
-    email:
-    {
+    email: {
         type: String,
         required: true,
-        unique: true,
-        lowercase: true
+        unique: true
     },
 
-    password:
-    {
+    password: {
         type: String,
-        required: true,
-        minlength: 6
+        required: true
+    },
+
+    rollNo: {
+        type: String,
+        default: ""
+    },
+
+    branch: {
+        type: String,
+        default: ""
+    },
+
+    semester: {
+        type: Number,
+        default: 1
+    },
+
+    phone: {
+        type: String,
+        default: ""
+    },
+
+    cgpa: {
+        type: Number,
+        default: 0
+    },
+
+    attendance: {
+        type: Number,
+        default: 0
+    },
+
+    profileImage: {
+        type: String,
+        default: "student.png"
+    },
+
+    enrolledCourses: [
+    {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Course"
     }
-
+    ],
+    assignedAssignments: [
+    {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Assignment"
+    }
+    ]
 },
 {
     timestamps: true

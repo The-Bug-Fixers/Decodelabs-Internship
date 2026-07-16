@@ -1,71 +1,11 @@
-/* -------------------------------Courses.html---------*/
-
-const search=document.getElementById("searchCourse");
-
-if(search){
-	search.addEventListener("keyup",function(){
-		const value=this.value.toLowerCase();
-		const cards=document.querySelectorAll(".course-card");
-		cards.forEach(card=>{
-			const text=card.innerText.toLowerCase();
-			card.style.display=text.includes(value)?"block":"none";
-		});
-	});
-}
+/* -------------------------------Courses.html-----------------------------------------------------*/
 
 
-/* ----------------------------assignment.html--------------------------------------*/
-
-const assignmentSearch=document.getElementById("assignmentSearch");
-
-if(assignmentSearch){
-	assignmentSearch.addEventListener("keyup",function(){
-		const value=this.value.toLowerCase();
-		document.querySelectorAll(".assignment-card").forEach(card=>{
-			card.style.display=card.innerText.toLowerCase().includes(value)?"block":"none";
-		});
-	});
-}
-
-const uploadForm=document.querySelector(".upload-form");
-
-if(uploadForm){
-	uploadForm.addEventListener("submit",function(e){
-		e.preventDefault();
-		alert("Assignment uploaded successfully!");
-		this.reset();
-	});
-}
+/* ----------------------------assignment.html-----------------------------------------------------*/
 
 
-/* -----------------------------contact.html----------------------------------------------*/
+/* -----------------------------contact.html--------------------------------------------------------*/
 
-const contactForm=document.getElementById("contactForm");
+/*-----------------------------------dashboard.html--------------------------------------------------*/
 
-if(contactForm){
-	contactForm.addEventListener("submit",function(e){
-		e.preventDefault();
-		alert("✅ Your message has been sent successfully!");
-		this.reset();
-	});
-}
-
-/*-----------------------------------dashboard.html------------*/
-const token = localStorage.getItem("token");
-
-if (!token) {
-    alert("Please login first!");
-    window.location.href = "login.html";
-}
-
-document.getElementById("logoutBtn").addEventListener("click", () => {
-
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-
-    alert("Logged out successfully!");
-
-    window.location.href = "login.html";
-
-});
-
+/*------------------------------------------profile.html----------------------------------------------*/

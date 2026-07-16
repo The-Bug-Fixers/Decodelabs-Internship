@@ -5,7 +5,11 @@ registerForm.addEventListener("submit", async function (e) {
     e.preventDefault();
 
     const name = document.getElementById("name").value.trim();
+    const rollNo = document.getElementById("rollNo").value.trim();
     const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const branch = document.getElementById("branch").value;
+    const semester = document.getElementById("semester").value;
     const password = document.getElementById("password").value.trim();
 
     try {
@@ -20,7 +24,11 @@ registerForm.addEventListener("submit", async function (e) {
 
             body: JSON.stringify({
                 name,
+                rollNo,
                 email,
+                phone,
+                branch,
+                semester,
                 password
             })
 
@@ -31,7 +39,6 @@ registerForm.addEventListener("submit", async function (e) {
         if (data.success) {
 
             alert("Registration Successful!");
-
             window.location.href = "login.html";
 
         } else {
@@ -43,7 +50,6 @@ registerForm.addEventListener("submit", async function (e) {
     } catch (error) {
 
         console.error(error);
-
         alert("Unable to connect to the server.");
 
     }
